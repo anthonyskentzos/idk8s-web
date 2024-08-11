@@ -37,12 +37,12 @@
         async function fetchData() {
             try {
                 // Fetch the date from the backend
-                const dateResponse = await fetch('http://backend:3000/');
+                const dateResponse = await fetch('http://apiv1:3000/');
                 const dateData = await dateResponse.json();
                 document.getElementById('date').textContent = dateData.date;
 
                 // Fetch the SHA value from the backend
-                const shaResponse = await fetch('http://backend:3000/sha');
+                const shaResponse = await fetch('http://apiv1:3000/sha');
                 const shaData = await shaResponse.json();
                 document.getElementById('sha').textContent = shaData.sha;
             } catch (error) {
