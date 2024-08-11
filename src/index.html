@@ -6,18 +6,58 @@
     <title>idk8s-web</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e8f4f8; /* Light blue background */
+            color: #333;
         }
         .container {
-            max-width: 600px;
-            margin: auto;
-        }
-        .section {
-            margin-bottom: 20px;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
-            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #003366; /* Dark blue */
+        }
+        .section {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #cce0ff; /* Light blue border */
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.5em;
+            margin: 0;
+            color: #00509e; /* Medium blue */
+            flex: 1;
+        }
+        .value {
+            font-size: 1.2em;
+            line-height: 1.6;
+            padding: 10px;
+            background-color: #f0f8ff; /* Very light blue */
+            border: 1px solid #b3d9ff; /* Light blue border */
+            border-radius: 4px;
+            max-width: 300px;
+            text-align: right;
+        }
+        .error {
+            color: #d9534f; /* Error red */
+            background-color: #f8d7da; /* Light red */
+            border-color: #f5c6cb; /* Red border */
+        }
+        .loading {
+            color: #007bff; /* Blue */
+            background-color: #d9ecff; /* Light blue */
+            border-color: #a5d0ff; /* Blue border */
         }
     </style>
 </head>
@@ -26,11 +66,11 @@
         <h1>idk8s-web</h1>
         <div class="section">
             <h2>APIv1 Current Date</h2>
-            <p id="date">Loading...</p>
+            <p id="date" class="value loading">Loading...</p>
         </div>
         <div class="section">
             <h2>APIv1 SHA Value</h2>
-            <p id="sha">Loading...</p>
+            <p id="sha" class="value loading">Loading...</p>
         </div>
     </div>
     <script>
@@ -38,22 +78,36 @@
             try {
                 // Fetch the date from the backend
                 const dateResponse = await fetch('http://localhost:3000/');
+                if (!dateResponse.ok) {
+                    throw new Error('Network response was not ok.');
+                }
                 const dateData = await dateResponse.json();
                 document.getElementById('date').textContent = dateData.date;
+                document.getElementById('date').classList.remove('loading');
 
                 // Fetch the SHA value from the backend
                 const shaResponse = await fetch('http://localhost:3000/sha');
+                if (!shaResponse.ok) {
+                    throw new Error('Network response was not ok.');
+                }
                 const shaData = await shaResponse.json();
                 document.getElementById('sha').textContent = shaData.sha;
+                document.getElementById('sha').classList.remove('loading');
+
             } catch (error) {
                 console.error('Error fetching data:', error);
                 document.getElementById('date').textContent = 'Error fetching date';
+                document.getElementById('date').classList.remove('loading');
+                document.getElementById('date').classList.add('error');
+
                 document.getElementById('sha').textContent = 'Error fetching SHA';
+                document.getElementById('sha').classList.remove('loading');
+                document.getElementById('sha').classList.add('error');
             }
         }
 
         // Call fetchData when the page loads
-        fetchData();
+        window.onload = fetchData;
     </script>
 </body>
 </html>
