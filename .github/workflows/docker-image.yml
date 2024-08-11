@@ -23,5 +23,5 @@ jobs:
     - name: Push to GitHub Container Registry
       run: |
         echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-        docker tag k8s-app:latest ghcr.io/${{ github.repository_owner }}/idk8s-web:latest
+        docker tag idk8s-web:latest ghcr.io/${{ github.repository_owner }}/idk8s-web:latest
         docker push ghcr.io/${{ github.repository_owner }}/idk8s-web:latest
