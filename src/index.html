@@ -98,7 +98,7 @@
                 document.getElementById('pawPatrolV1').classList.remove('loading');
 
                 // Fetch the app version value from APIv1
-                const appVerResponse = await fetch('http://idk8s.example/api/v1//appver');
+                const appVerResponse = await fetch('http://idk8s.example/api/v1/appver');
                 if (!appVerResponse.ok) {
                     throw new Error('Network response was not ok.');
                 }
