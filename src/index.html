@@ -89,7 +89,7 @@
         async function fetchData() {
             try {
                 // Fetch the Paw Patrol character from APIv1
-                const pawPatrolV1Response = await fetch('http://idk8s.example:3000/pawpatrol');
+                const pawPatrolV1Response = await fetch('http://idk8s-apiv1-service:3000/pawpatrol');
                 if (!pawPatrolV1Response.ok) {
                     throw new Error('Network response was not ok.');
                 }
@@ -98,7 +98,7 @@
                 document.getElementById('pawPatrolV1').classList.remove('loading');
 
                 // Fetch the app version value from APIv1
-                const appVerResponse = await fetch('http://idk8s.example:3000/appver');
+                const appVerResponse = await fetch('http://idk8s-apiv1-service:3000/appver');
                 if (!appVerResponse.ok) {
                     throw new Error('Network response was not ok.');
                 }
