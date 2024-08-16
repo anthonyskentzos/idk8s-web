@@ -89,7 +89,7 @@
         async function fetchData() {
             try {
                 // Fetch the Paw Patrol character from APIv1
-                const pawPatrolV1Response = await fetch('http://idk8s-apiv1-service:3000/pawpatrol');
+                const pawPatrolV1Response = await fetch('http://http://idk8s.example/api/v1/pawpatrol');
                 if (!pawPatrolV1Response.ok) {
                     throw new Error('Network response was not ok.');
                 }
@@ -98,7 +98,7 @@
                 document.getElementById('pawPatrolV1').classList.remove('loading');
 
                 // Fetch the app version value from APIv1
-                const appVerResponse = await fetch('http://idk8s-apiv1-service:3000/appver');
+                const appVerResponse = await fetch('http://idk8s.example/api/v1//appver');
                 if (!appVerResponse.ok) {
                     throw new Error('Network response was not ok.');
                 }
@@ -107,7 +107,7 @@
                 document.getElementById('appVer').classList.remove('loading');
 
                 // Fetch the Paw Patrol character from APIv2
-                const pawPatrolV2Response = await fetch('http://idk8s.example:3001/pawpatrol');
+                const pawPatrolV2Response = await fetch('http://idk8s.example/api/v2//pawpatrol');
                 if (!pawPatrolV2Response.ok) {
                     throw new Error('Network response was not ok.');
                 }
@@ -116,7 +116,7 @@
                 document.getElementById('pawPatrolV2').classList.remove('loading');
 
                 // Fetch the app version value from APIv2
-                const appVerV2Response = await fetch('http://idk8s.example:3001/appver');
+                const appVerV2Response = await fetch('http://idk8s.example/api/v2/appver');
                 if (!appVerV2Response.ok) {
                     throw new Error('Network response was not ok.');
                 }
