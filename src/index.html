@@ -86,71 +86,37 @@
         </div>
     </div>
     <script>
-        async function fetchData() {
+        // Define the base URL for your APIs
+        const API_BASE_URL = 'http://idk8s.example/api';
+
+        // Fetch data for a specific endpoint
+        async function fetchData(endpoint, elementId) {
             try {
-                // Fetch the Paw Patrol character from APIv1
-                const pawPatrolV1Response = await fetch('http://idk8s.example/api/v1/pawpatrol');
-                if (!pawPatrolV1Response.ok) {
+                const response = await fetch(`${API_BASE_URL}/${endpoint}`);
+                if (!response.ok) {
                     throw new Error('Network response was not ok.');
                 }
-                const pawPatrolV1Data = await pawPatrolV1Response.json();
-                document.getElementById('pawPatrolV1').textContent = pawPatrolV1Data.character;
-                document.getElementById('pawPatrolV1').classList.remove('loading');
-
-                // Fetch the app version value from APIv1
-                const appVerResponse = await fetch('http://idk8s.example/api/v1/appver');
-                if (!appVerResponse.ok) {
-                    throw new Error('Network response was not ok.');
-                }
-                const appVerData = await appVerResponse.json();
-                document.getElementById('appVer').textContent = appVerData.appVer;
-                document.getElementById('appVer').classList.remove('loading');
-
-                // Fetch the Paw Patrol character from APIv2
-                const pawPatrolV2Response = await fetch('http://idk8s.example/api/v2/pawpatrol');
-                if (!pawPatrolV2Response.ok) {
-                    throw new Error('Network response was not ok.');
-                }
-                const pawPatrolV2Data = await pawPatrolV2Response.json();
-                document.getElementById('pawPatrolV2').textContent = pawPatrolV2Data.character;
-                document.getElementById('pawPatrolV2').classList.remove('loading');
-
-                // Fetch the app version value from APIv2
-                const appVerV2Response = await fetch('http://idk8s.example/api/v2/appver');
-                if (!appVerV2Response.ok) {
-                    throw new Error('Network response was not ok.');
-                }
-                const appVerV2Data = await appVerV2Response.json();
-                document.getElementById('appVerV2').textContent = appVerV2Data.appVer;
-                document.getElementById('appVerV2').classList.remove('loading');
-
+                const data = await response.json();
+                document.getElementById(elementId).textContent = data.character || data.appVer;
+                document.getElementById(elementId).classList.remove('loading');
             } catch (error) {
                 console.error('Error fetching data:', error);
-
-                // Handle errors for APIv1 Paw Patrol
-                document.getElementById('pawPatrolV1').textContent = 'Error fetching Paw Patrol Character';
-                document.getElementById('pawPatrolV1').classList.remove('loading');
-                document.getElementById('pawPatrolV1').classList.add('error');
-
-                // Handle errors for APIv1 App Version
-                document.getElementById('appVer').textContent = 'Error fetching App Version';
-                document.getElementById('appVer').classList.remove('loading');
-                document.getElementById('appVer').classList.add('error');
-
-                // Handle errors for APIv2 Paw Patrol
-                document.getElementById('pawPatrolV2').textContent = 'Error fetching Paw Patrol Character';
-                document.getElementById('pawPatrolV2').classList.remove('loading');
-                document.getElementById('pawPatrolV2').classList.add('error');
-
-                // Handle errors for APIv2 App Version
-                document.getElementById('appVerV2').textContent = 'Error fetching App Version';
-                document.getElementById('appVerV2').classList.remove('loading');
-                document.getElementById('appVerV2').classList.add('error');
+                document.getElementById(elementId).textContent = 'Error fetching data';
+                document.getElementById(elementId).classList.remove('loading');
+                document.getElementById(elementId).classList.add('error');
             }
         }
 
-        // Call fetchData when the page loads
-        window.onload = fetchData;
+        // Initialize data fetching
+        function initialize() {
+            fetchData('v1/pawpatrol', 'pawPatrolV1');
+            fetchData('v1/appver', 'appVer');
+            fetchData('v2/pawpatrol', 'pawPatrolV2');
+            fetchData('v2/appver', 'appVerV2');
+        }
+
+        // Call initialize when the page loads
+        window.onload = initialize;
     </script>
 </body>
 </html>
