@@ -89,7 +89,7 @@
         async function fetchData() {
             try {
                 // Fetch the Paw Patrol character from APIv1
-                const pawPatrolV1Response = await fetch('/http://idk8s.example/api/v1/pawpatrol');
+                const pawPatrolV1Response = await fetch('http://idk8s.example/api/v1/pawpatrol');
                 if (!pawPatrolV1Response.ok) {
                     throw new Error('Network response was not ok.');
                 }
