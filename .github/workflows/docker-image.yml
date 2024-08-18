@@ -5,9 +5,9 @@ on:
     branches: [ "master" ]
 
 env:
-  APP_NAME: idk8s-web
+  APP_NAME: idk8s-apiv2
   INFRA_REPO: anthonyskentzos/idk8s-infra
-  INFRA_DIR: apps/web/envs/dev
+  INFRA_DIR: apps/apiv2/envs/dev
 
 jobs:
   build:
@@ -56,8 +56,6 @@ jobs:
 
       - name: Set up Kustomize
         uses: imranismail/setup-kustomize@v2.1.0
-        with:
-          kustomize-version: 4.0.0
 
       - name: Update Kustomize Image
         run: kustomize edit set image ghcr.io/${{ github.repository_owner }}/${{ env.APP_NAME }}:${{ needs.build.outputs.short_sha }}
@@ -67,7 +65,7 @@ jobs:
         run: |
           git config user.email "gitops@idk8s.example"
           git config user.name "gitops"
-          git commit -am "update ${{ env.APP_NAME }} to ${{ needs.build.short_sha }}"
+          git commit -am "update ${{ env.APP_NAME }} to ${{ needs.build.outputs.short_sha }}"
           git pull --rebase
           git push
 
