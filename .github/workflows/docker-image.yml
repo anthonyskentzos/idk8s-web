@@ -5,7 +5,7 @@ on:
     branches: [ "master" ]
 
 env:
-  APP_NAME: idk8s-apiv2
+  APP_NAME: idk8s-web
   INFRA_REPO: anthonyskentzos/idk8s-infra
   INFRA_DIR: apps/apiv2/envs/dev
 
