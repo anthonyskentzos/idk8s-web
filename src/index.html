@@ -8,21 +8,28 @@
 </head>
 <body>
     <div class="container">
-        <div class="title">idk8s-web</div>
+        <div class="header">
+            <h1>idk8s-web</h1>
+        </div>
         <div class="section">
-            <div class="env">
-                Environment: <span id="environment" class="value loading">Loading...</span>
-            </div>
-            <div class="section">
-                <h2>APIv1</h2>
-                <p id="pawPatrolV1" class="endpoint loading">Loading...</p>
-                <p id="imageTag" class="endpoint loading">Loading...</p>
-            </div>
-            <div class="section">
-                <h2>APIv2</h2>
-                <p id="pawPatrolV2" class="endpoint loading">Loading...</p>
-                <p id="imageTagV2" class="endpoint loading">Loading...</p>
-            </div>
+            <span class="section-header">APIv1 /environment:</span>
+            <span id="environment" class="value loading">Loading...</span>
+        </div>
+        <div class="section">
+            <span class="section-header">APIv1 /pawpatrol:</span>
+            <span id="pawPatrolV1" class="value loading">Loading...</span>
+        </div>
+        <div class="section">
+            <span class="section-header">APIv1 /imagetag:</span>
+            <span id="imageTag" class="value loading">Loading...</span>
+        </div>
+        <div class="section">
+            <span class="section-header">APIv2 /pawpatrol:</span>
+            <span id="pawPatrolV2" class="value loading">Loading...</span>
+        </div>
+        <div class="section">
+            <span class="section-header">APIv2 /imagetag:</span>
+            <span id="imageTagV2" class="value loading">Loading...</span>
         </div>
     </div>
     <script src="app.js"></script>
