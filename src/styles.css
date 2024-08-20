@@ -1,0 +1,61 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e8f4f8; /* Light blue background */
+    color: #333;
+}
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #003366; /* Dark blue */
+}
+.section {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #cce0ff; /* Light blue border */
+}
+.section:last-child {
+    border-bottom: none; /* Remove bottom border from the last section */
+}
+.section h2 {
+    font-size: 1.8em;
+    margin: 0;
+    color: #00509e; /* Medium blue */
+}
+.endpoint {
+    font-size: 1.2em;
+    line-height: 1.6;
+    padding: 10px;
+    background-color: #f0f8ff; /* Very light blue */
+    border: 1px solid #b3d9ff; /* Light blue border */
+    border-radius: 4px;
+    max-width: 300px;
+    text-align: right;
+    margin-bottom: 10px;
+}
+.error {
+    color: #d9534f; /* Error red */
+    background-color: #f8d7da; /* Light red */
+    border-color: #f5c6cb; /* Red border */
+}
+.loading {
+    color: #007bff; /* Blue */
+    background-color: #d9ecff; /* Light blue */
+    border-color: #a5d0ff; /* Blue border */
+}
+.env {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #004080; /* Dark blue */
+    text-align: center;
+}

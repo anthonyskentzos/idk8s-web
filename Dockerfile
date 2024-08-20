@@ -1,8 +1,7 @@
 FROM nginx:alpine
 
-COPY src/index.html /usr/share/nginx/html/index.html
+COPY src/ /usr/share/nginx/html/
 
 EXPOSE 80
 
-# Default command to run Nginx
 CMD ["nginx", "-g", "daemon off;"]
